@@ -1,0 +1,25 @@
+{
+  "name": "socket-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "url": "https://github.com/Noante/sharestation-socket-service.git"
+  },
+  "contributors": [
+    "Caio Morais <https://github.com/CaioV1>",
+    "Caique Oliveira <https://github.com/xguhkaa>"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "socket.io": "^4.1.3"
+  }
+}
