@@ -1,25 +1,20 @@
 module.exports = (io, socket) => {
 
-    const createFile = (file) => {
-        // socket.to(socketId).emit("upload", file);
-        socket.emit("upload", file);
-        socket.broadcast.emit("upload", file);
+    const downloadFile = (data) => {
+        socket.to(data.to).emit("client:downloadFile", {
+            ...data,
+            from: socket.id
+        });
     }
 
-    const listDir = (path) => {
-        // socket.to(socketId).emit("list_file", path);
-        socket.emit("client:listDir", path);
-        socket.broadcast.emit("client:listDir", path);
+    const listDir = (data) => {
+        socket.to(data.to).emit("client:listDir", {
+            ...data,
+            from: socket.id
+        });
     }
 
-    const readFile = (path) => {
-        // socket.to(socketId).emit("list_file", path);
-        socket.emit("readFile", path);
-        socket.broadcast.emit("readFile", path);
-    }
-
-    socket.on("client:create", createFile);
-    socket.on("file:read", readFile);
+    socket.on("client:downloadFile", downloadFile);
     socket.on("client:listDir", listDir);
 
 }
